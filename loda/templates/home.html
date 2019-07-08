@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+	<header>
+		<div class="container">
+		<div id="brandname">
+		<h1>	Flask Deep learning app for Decompositional attetntion model </h1>
+		</div>
+		<h2>RTE Task</h2>
+		<h3> Enter text sentence in first box and hypothesis sentence in the second . Press predict to get the relation</h3>
+
+	</div>
+	</header>
+
+	<div class="ml-container">
+
+
+
+	<form action="{{ url_for('predict')}}" method="POST">
+
+	<!-- <input type="text" name="comment"/> -->
+	<textarea name="message" rows="4" cols="50"></textarea>
+	<br/>
+
+
+
+	<textarea name="messages" rows="4" cols="50"></textarea>
+	<br/>
+
+	<input type="submit" class="btn-info" value="predict">
+
+</form>
+
+	</div>
+
+
+
+
+</body>
+</html>
