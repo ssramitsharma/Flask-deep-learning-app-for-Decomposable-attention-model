@@ -9,4 +9,4 @@ flask
 python atts.py <br/>
 python app.py
 
-First the model is trained and the weihts are generated. The same weights are then loaded and the mdoel give prediction .
+First the model is trained and the weihts are generated. The same weights are then loaded and the mdoel gives prediction .
