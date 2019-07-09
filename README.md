@@ -1,7 +1,7 @@
 # Flask-deep-learning-app-for-Decompositional attention model
 
 # Requirements:
-keras 2.4.2
+keras 2.4.2 \\
 spacy
 flask
 
