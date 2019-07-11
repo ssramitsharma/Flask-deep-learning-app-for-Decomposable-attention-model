@@ -1,7 +1,6 @@
 from flask import Flask,render_template,url_for,request
 import pandas as pd 
 import pickle
-import numpy as np
 #for importing our keras model
 import keras.models
 #for regular expressions, saves time dealing with string data
@@ -9,80 +8,20 @@ import re
 import keras
 from keras.layers import LSTM,Embedding,Dropout,Activation,Dense,Bidirectional,GRU
 from keras.models import Sequential,Input,Model
-import numpy as np
-from keras.utils import to_categorical
-from keras.preprocessing.text import Tokenizer
-from keras.preprocessing.sequence import  pad_sequences
-import time
-import spacy
-import numpy as np
-import time
-import json
-#system level operations (like loading files)
-import sys 
-#for reading operating system data
-import os
-#tell our app where our saved model is
-#sys.path.append(os.path.abspath("./model"))
-
-#initalize our flask app
-#app = Flask(__name__)
-#global vars for easy reusability
-
-#initialize these variables
-
-from flask import Flask,render_template,url_for,request
-#import pandas as pd 
-import pickle
-
-import numpy as np
-#for importing our keras model
-import keras.models
-#for regular expressions, saves time dealing with string data
-import re
-import keras
-from keras.layers import LSTM,Embedding,Dropout,Activation,Dense,Bidirectional,GRU
-from keras.models import Sequential,Input,Model
-import numpy as np
-from keras.utils import to_categorical
-from keras.preprocessing.text import Tokenizer
-from keras.preprocessing.sequence import  pad_sequences
-import time
-import spacy
-import numpy as np
-#import matplotlib
-#matplotlib.use('Agg')
-#import matplotlib.pyplot as plt 
-import time
-import json
-#system level operations (like loading files)
-import sys 
-#for reading operating system data
-import os
-#tell our app where our saved model is
-#sys.path.append(os.path.abspath("./model"))
-
-#initalize our flask app
-#app = Flask(__name__)
-#global vars for easy reusability
-
-#initialize these variables
-
-import numpy as np
-glove_filename = 'glove.6B.50d.txt'
-
-import tensorflow as tf
-import numpy as np
-import keras.models
 from keras.models import model_from_json
-
-import tensorflow as tf
-
-
-#import ujson as json
+import numpy as np
 from keras.utils import to_categorical
-
-
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.sequence import  pad_sequences
+import time
+import spacy
+import json
+#system level operations (like loading files)
+import sys 
+#for reading operating system data
+import os
+import tensorflow as tf
+glove_filename = 'glove.6B.50d.txt'
 nlp = spacy.load('en_vectors_web_lg')            
             
             
@@ -94,7 +33,6 @@ def inits():
     #load woeights into new model
     loaded_model.load_weights("model.h5")
     print("Loaded Model from disk")
-
     #compile and evaluate loaded model
     #loaded_model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
     #loss,accuracy = model.evaluate(X_test,y_test)
@@ -104,17 +42,6 @@ def inits():
 
     return loaded_model,graph
 model, graph = inits()
-
-
-
-import spacy
-import numpy as np
-#import matplotlib
-#matplotlib.use('Agg')
-#import matplotlib.pyplot as plt 
-import time
-import json
-import pandas as pd
 
 def create_dataset(nlp, texts, hypotheses, num_oov, max_length, norm_vectors = True):
     sents = texts + hypotheses
@@ -160,21 +87,7 @@ def create_dataset(nlp, texts, hypotheses, num_oov, max_length, norm_vectors = T
         
     return vectors, np.array(sents_as_ids[:len(texts)]), np.array(sents_as_ids[len(texts):])
 
-
-# In[10]:
-
-
-#sem_vectors, text_vectors, hypothesis_vectors = create_dataset(nlp, texts, hypotheses, 100, 50, True)
-
-
-
 app = Flask(__name__)
-            
-            
-            
-
-
-
 
 @app.route('/')
 def home():
@@ -203,26 +116,13 @@ def predict():
             t = None
             c = np.eye(n_values, dtype=int)[np.argmax(y, axis=1)]
             print(c,'c')
-            
             if str(c) == "[[1 0 0]]":
                 t = 0
-
             if str(c) == "[[0 1 0]]":
                 t = 1
             if str(c) == "[[0 0 1]]":
                 t = 2
-
-   
-           
-    
-        
-        
-    
-    
-
         return render_template('result.html',prediction = t)
-
-
 
 if __name__ == '__main__':
 	app.run(debug=True)
