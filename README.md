@@ -13,7 +13,7 @@ As shown in the figuere there are two boxes in the app , in the first box the te
 
 ![alt text](https://github.com/ssramitsharma/Flask-deep-learning-app-for-Decomposable-attention-model/blob/master/flask2.png)
 
-The ouput we get is contradiction as shown in the above figure.
+The ouput we get is Contradiction as shown in the above figure.
 # Requirements:
 keras 2.4.2 <br/>
 spacy <br/>
